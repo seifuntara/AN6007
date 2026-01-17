@@ -1,0 +1,16 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">
+</head>
+
+<body>
+<div class="container">
+    <h2>Admin System</h2>
+    <form action="admin/household_registration" method="post">
+        <input type="submit" value="Household Registration">
+    </form>
+    <form action="admin/merchant_registration" method="post">
+        <input type="submit" value="Merchant Registration">
+    </form>
+</div>
+</body>
