@@ -6,10 +6,17 @@
 <body>
 <div class="container">
     <h2>Merchant App - ID: {{ merchant_id }}</h2>
-    <form action="/xxx" method="post">
-        <p>Please enter voucher id<p>
-        <input type="text" name="q">
-        <input type="submit" value="Enter">
+
+    <!-- Show message if verification succeeded or failed -->
+    {% if message %}
+        <p style="color: green; font-weight: bold;">{{ message }}</p>
+    {% endif %}
+
+    <!-- Form to verify a transaction -->
+    <form action="/merchant/{{ merchant_id }}/verify" method="post">
+        <p>Please enter voucher TX ID:</p>
+        <input type="text" name="tx_id" placeholder="Enter Voucher ID" required>
+        <input type="submit" value="Verify">
     </form>
 </div>
 </body>

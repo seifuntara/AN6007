@@ -5,8 +5,8 @@ body {
     padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start;
+    min-height: 100vh;
 }
 
 .container {
@@ -76,6 +76,41 @@ p {
     font-size: 18px;
     color: #007bff;
 }
+
+/* --- Voucher grid container --- */
+.voucher-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 80px); /* 3 vouchers per row */
+    gap: 10px;
+    justify-content: center; /* center horizontally */
+    margin-top: 20px;
+}
+
+/* Hide default checkboxes */
+.voucher-grid input[type="checkbox"] {
+    display: none;
+}
+
+/* Style each voucher as a clickable button */
+.voucher-grid label {
+    display: inline-block;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #4CAF50;
+    color: #4CAF50;
+    cursor: pointer;
+    margin: 3px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Highlight label when selected */
+.voucher-grid input[type="checkbox"]:checked + label {
+    background-color: #4CAF50;
+    color: white;
+}
+
 
 @media (max-width: 768px) {
     .container {

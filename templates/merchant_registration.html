@@ -6,10 +6,17 @@
 <body>
 <div class="container">
     <h2>Merchant Registration</h2>
-    <form action="/xxx" method="post">
+
+    <!-- Registration form -->
+    <form action="/admin/merchant_registration" method="post">
         <p>Please enter merchant name<p>
         <input type="text" name="q">
-        <input type="submit" value="Register">
+        <input type="submit" name="register" value="Register">
     </form>
+
+    <!-- Show registered message -->
+    {% if registered %}
+        <p style="color:green;">{{ message }}</p>
+    {% endif %}
 </div>
 </body>

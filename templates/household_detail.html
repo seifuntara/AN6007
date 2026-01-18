@@ -6,8 +6,41 @@
 <body>
 <div class="container">
     <h2>Household App - ID: {{ household_id }}</h2>
-    <form action="/xxx" method="post">
-        <input type="submit" value="Redeem">
+    <p>Status: {{ household_info[2] }}, Balance: ${{ household_info[3] }}</p>
+
+    <h3>Available Vouchers</h3>
+    <form action="/household/{{ household_id }}/redeem" method="post">
+        <div class="voucher-grid">
+            {% for value, count in vouchers.items() %}
+                {% for i in range(count) %}
+                    <input type="checkbox" id="voucher_{{ value }}_{{ i }}" name="redeem" value="{{ value }}">
+                    <label for="voucher_{{ value }}_{{ i }}">${{ value }}</label>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <p>Total to be redeemed: $<span id="total">0</span></p>
+        <input type="submit" value="Redeem Selected Vouchers">
     </form>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
 </div>
 </body>
+
+<script>
+    const checkboxes = document.querySelectorAll('.voucher-grid input[type="checkbox"]');
+    const totalEl = document.getElementById('total');
+
+    function updateTotal() {
+        let total = 0;
+        checkboxes.forEach(cb => {
+            if (cb.checked) {
+                total += parseInt(cb.value);
+            }
+        });
+        totalEl.textContent = total;
+    }
+
+    // Add event listener to every checkbox
+    checkboxes.forEach(cb => cb.addEventListener('change', updateTotal));
+</script>
