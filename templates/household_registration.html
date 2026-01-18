@@ -6,13 +6,30 @@
 <body>
 <div class="container">
     <h2>Household Registration</h2>
-    <form action="/xxx" method="post">
-        <p>Please enter household id<p>
-        <input type="text" name="q">
-        <input type="submit" value="Register">
-    </form>
-    <form action="/xxx" method="post">
-        <input type="submit" value="Claim">
-    </form>
+
+    <!-- Registration form -->
+     {% if not registered and not claimed  %}
+        <form action="/admin/household_registration" method="post">
+            <p>Please enter household name</p>
+            <input type="text" name="q" required>
+            <input type="submit" name="register" value="Register">
+        </form>
+    {% endif %}
+    
+    <!-- Show registration message -->
+    {% if registered and not claimed %}
+        <p style="color:green;">{{ message }}</p>
+
+        <!-- Show Claim button after registration -->
+        <form action="/admin/household_registration" method="post">
+            <input type="hidden" name="household_id" value="{{ household_id }}">
+            <input type="submit" name="claim" value="Claim">
+        </form>
+    {% endif %}
+
+    <!-- Show claim message -->
+    {% if claimed %}
+        <p style="color:blue;">{{ message }}</p>
+    {% endif %}
 </div>
 </body>

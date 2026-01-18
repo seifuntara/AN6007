@@ -1,1 +1,4 @@
-household_id,claim_status,balance
+household_id,name,claim_status,balance,denominations
+H001,seif,NOT_CLAIMED,0,
+H002,money,CLAIMED,300,"{""2"": 30, ""5"": 12, ""10"": 10}"
+H003,world,CLAIMED,300,"{""2"": 30, ""5"": 12, ""10"": 10}"
