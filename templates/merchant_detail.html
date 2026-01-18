@@ -9,13 +9,13 @@
 
     <!-- Show message if verification succeeded or failed -->
     {% if message %}
-        <p style="color: green; font-weight: bold;">{{ message }}</p>
+        <p style="color: blue; font-weight: bold;">{{ message }}</p>
     {% endif %}
 
     <!-- Form to verify a transaction -->
     <form action="/merchant/{{ merchant_id }}/verify" method="post">
-        <p>Please enter voucher TX ID:</p>
-        <input type="text" name="tx_id" placeholder="Enter Voucher ID" required>
+        <p>Please enter voucher ID:</p>
+        <input type="text" name="voucher_id" placeholder="Enter Voucher ID" required>
         <input type="submit" value="Verify">
     </form>
 </div>

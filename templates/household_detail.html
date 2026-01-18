@@ -19,6 +19,7 @@
             {% endfor %}
         </div>
         <p>Total to be redeemed: $<span id="total">0</span></p>
+        <input type="hidden" name="total_amount" id="total_amount">
         <input type="submit" value="Redeem Selected Vouchers">
     </form>
     {% if message %}
@@ -39,6 +40,7 @@
             }
         });
         totalEl.textContent = total;
+        document.getElementById('total_amount').value = total;
     }
 
     // Add event listener to every checkbox
