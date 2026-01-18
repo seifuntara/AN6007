@@ -93,6 +93,7 @@ def household():
 @app.route("/household/<household_id>")
 def household_detail(household_id):
     household_info = None
+    message = request.args.get("message")
     csv_path = "data/households.csv"
 
     with open(csv_path, newline="") as file:
@@ -106,7 +107,7 @@ def household_detail(household_id):
         return "Household id not found", 404
 
     vouchers = json.loads(household_info[4])
-    return render_template("household_detail.html", household_id=household_id, household_info=household_info, vouchers=vouchers)
+    return render_template("household_detail.html", household_id=household_id, household_info=household_info, vouchers=vouchers, message=message)
 
 @app.route("/household/<household_id>/redeem", methods=["POST"])
 def redeem_vouchers(household_id):
@@ -185,7 +186,7 @@ def merchant_verify(merchant_id):
                 vouchers = json.loads(row[4])
                 for v in json.loads(selected_vouchers):
                     vouchers[v] -= 1
-                row[3] = str(int(row[3]) - total_amount)  # update balance
+                row[3] = str(int(row[3]) - int(total_amount))  # update balance
                 row[4] = json.dumps(vouchers)  # save vouchers as JSON string
 
     with open(csv_path, "w", newline="") as f:
