@@ -1,2 +1,3 @@
 transaction_id,household_id,merchant_id,total_amount,vouchers,status
 TX001,H001,M001,20,"[""10"", ""10""]",COMPLETED
+TX002,H002,M001,4,"[""2"", ""2""]",COMPLETED
